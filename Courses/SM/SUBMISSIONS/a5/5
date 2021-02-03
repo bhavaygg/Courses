@@ -1,0 +1,153 @@
+1) read a;
+read v;
+read c;
+if [ $a -gt $v ]
+then
+ if [$a -gt $c ]
+ then
+  echo $a
+ else
+  echo $c
+ fi
+else
+ if [ $v -gt $c ]
+ then
+  echo $v
+ else
+  echo $c
+ fi
+fi
+
+2)echo `ls -F | grep -v /| wc -l`	
+
+3) i=1
+until [ $i -gt 10 ]
+do
+ echo $i
+ i=`expr $i + 1`
+done
+
+4)read x;
+user=`whoami`
+if [ "$user" = "$x" ]
+then
+echo "Correct User"
+else
+echo "Incorrect User"
+fi
+
+5)echo "" > employee.txt
+ch="y"
+while [ "$ch" = "y" ]
+do
+ read name;
+ read grade;
+ read salary;
+ echo $name","$grade","$salary >> employee.txt
+ read ch;
+done
+
+
+6)read a;
+case $a in
+
+	1)
+		echo "Hello yourself!"
+		;;
+	2)
+		echo "See you again!"
+		break
+		;;
+	*)
+		echo "Sorry, I don't understand"
+		;;
+  esac
+
+7)read FILE;
+if [ -f "$FILE" ];
+then
+   echo "File $FILE exist."
+else
+   echo "File $FILE does not exist"
+fi
+
+
+8)read n;
+ls -l| grep  $n | sed -E -e 's/[[:blank:]]+/\n/g' | head -n1
+
+
+9)read n;
+ i=0
+ sum=0
+ while [ $i -lt $n ]
+ do
+  read s;
+  sum=`expr $sum + $s` 
+  i=`expr $i + 1` 
+ done
+ echo $sum
+
+10)awk '{}
+sum+=$8;
+END{print sum}' emp.txt
+
+11)read src
+read targ
+cp $src $targ
+
+12)i=0
+n=1
+while [ "$i" -lt 10 ]
+ do
+   echo $n
+   n=`expr $n + 2`
+   i=`expr $i + 1`
+ done
+
+13)read a;
+n=1
+fact=1
+while [ "$n" -le "$a" ]
+ do
+
+   
+   fact=`echo $(($fact*$n))`
+   n=`expr $n + 1` 
+ done
+echo $fact
+
+14)read n;
+sum=0
+while [ $n -gt 0 ]
+do
+r=`expr $n % 10` 
+n=`expr $n / 10`
+sum=`expr $sum + $r`
+done
+echo $sum
+
+
+15)read n;
+q=0
+r=1
+echo $q
+echo $r
+while [ $n -gt 2 ]
+do
+d=$r
+r=`expr $r + $q`
+q=$d
+n=`expr $n - 1` 
+echo $r
+done
+
+16)read n;
+r=0
+while [ $n -gt 0 ]
+do
+q=$(($n % 10))
+w=$(($r * 10))
+r=`expr $q + $w` 
+n=$(($n/10))
+done
+echo $r
